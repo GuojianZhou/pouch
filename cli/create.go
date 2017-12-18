@@ -53,10 +53,10 @@ func (cc *CreateCommand) runCreate(args []string) error {
 	if err != nil {
 		return fmt.Errorf("failed to create container: %v", err)
 	}
-
 	config.Image = ref.String()
-	if len(args) == 2 {
-		config.Cmd = strings.Fields(args[1])
+
+	if len(args) > 1 {
+		config.Cmd = args[1:]
 	}
 	containerName := cc.name
 
